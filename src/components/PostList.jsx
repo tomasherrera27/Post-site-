@@ -22,20 +22,16 @@ class PostList extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const lastPost = this.state.posts.slice(-1).pop();
-    let newPost = {
-      id: lastPost ? lastPost.id + 1 : 0,
-      title: event.target.title.value,
-      content: event.target.content.value
-    };
+    // AREA DE TRABAJO --> 
+    // Primero debemos saber si tenemos un post o no
+    // Segundo debemos crear un nuevo post con lo que traiga el event
+    // Tercero debemos agregarlo a nuestro arreglo de posts y actualizar el estado
 
-    const posts = [...this.state.posts, newPost];
-    this.setState({ posts: posts });
   };
 
   handleDelete = postToDelete => {
-    let posts = this.state.posts.filter(post => post.id !== postToDelete.id);
-    this.setState({ posts: posts });
+    // AREA DE TRABAJO --> Hacer una funcion para eliminar el post seleccionado
+
   };
 
   render() {
