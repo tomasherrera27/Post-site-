@@ -2,6 +2,7 @@ import React from "react";
 import PostItem from "./PostItem.jsx";
 import PostForm from "./PostForm.jsx";
 
+
 class PostList extends React.Component {
   state = {
     posts: [
@@ -26,12 +27,20 @@ class PostList extends React.Component {
     // Primero debemos saber si tenemos un post o no
     // Segundo debemos crear un nuevo post con lo que traiga el event
     // Tercero debemos agregarlo a nuestro arreglo de posts y actualizar el estado
-
+    const lastPost = this.state.posts.slice(-1).pop();
+    let Post = {
+      id: lastPost ? lastPost.id + 1 : 0,
+      title: event.target.title.value,
+      content: event.target.content.value
+    };
+    const posts = [...this.state.posts, Post];
+    this.setState({ posts: posts });
   };
 
   handleDelete = postToDelete => {
     // AREA DE TRABAJO --> Hacer una funcion para eliminar el post seleccionado
-
+    let posts = this.state.posts.filter(post => post.id !== postToDelete.id);
+    this.setState({ posts: posts });
   };
 
   render() {
